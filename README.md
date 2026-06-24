@@ -19,15 +19,9 @@ Fashion Website là một nền tảng thương mại điện tử hiện đại
 
 #### **Tài khoản Admin (Full quyền)**
 
-- **Email:** `vominhtu1212004@gmail.com`
-- **Password:** `1234567`
+- **Email:** `admin@fitme.vn`
+- **Password:** `Admin@123456`
 - **Quyền:** Quản lý sản phẩm, đơn hàng, người dùng, thống kê, chat hỗ trợ
-
-#### **Tài khoản User (Có dữ liệu mẫu)**
-
-- **Email:** `vominhtu1@gmail.com`
-- **Password:** `123456`
-- **Lợi ích:** Lịch sử đơn hàng, địa chỉ, giỏ hàng
 
 ## Hướng dẫn cài đặt & chạy
 
@@ -43,7 +37,7 @@ Fashion Website là một nền tảng thương mại điện tử hiện đại
 #### **Bước 1: Clone Repository**
 
 ```bash
-git clone https://github.com/TuMinhIT/Fashion-website.git
+git clone https://github.com/TrungTai-gif/fashion-website.git
 cd Fashion-website
 ```
 
@@ -141,17 +135,6 @@ npm run build
 # Xem preview production build
 npm run preview
 ```
-
-### Contributors
-- **Nguyễn Trung Tài (Leader):** TuMinhIT
-- **Huỳnh Thị Thanh Nhung:** mthegn3003/mthegn1212
-- **Lê Thị Bích My:** hoangdinh-34
-
-### Liên hệ & Support
-
-- **GitHub:** [github.com/TuMinhIT/Fashion-website](https://github.com/TuMinhIT/Fashion-website)
-- **Email:** vominhtu1212004@gmail.com
-- **Issues:** Báo cáo bug hoặc yêu cầu feature via GitHub Issues
 
 ---
 
