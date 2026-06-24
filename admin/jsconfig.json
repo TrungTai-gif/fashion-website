@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@layout": ["src/layouts/index.jsx"],
+      "@layout/*": ["src/layouts/*"],
+      "@services/*": ["src/services/*"],
+      "@components/*": ["src/components/*"]
+    }
+  },
+  "include": ["src", "../client/src/component/order_component/OrderLine.jsx"]
+}

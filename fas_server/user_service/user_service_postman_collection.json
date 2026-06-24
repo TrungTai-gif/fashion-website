@@ -1,0 +1,106 @@
+{
+  "info": {
+    "name": "User API",
+    "_postman_id": "c5c0f940-6c74-4d8f-9a8d-000000000001",
+    "description": "Collection test API User Register",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Nguyễn Văn E\",\n  \"email\": \"e.nguyen@example.com\",\n  \"password\": \"123456\",\n  \"role\": \"user\",\n  \"address\": {\n    \"street\": \"123 Lý Thường Kiệt\",\n    \"city\": \"Hà Nội\",\n    \"state\": \"Hà Nội\",\n    \"zipCode\": \"100000\",\n    \"country\": \"Vietnam\",\n    \"isDefault\": true\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/users/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "users", "register"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"e.nguyen@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/users/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "users", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Address By User Id(Token user or admin)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{accessToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/users/address/68d38553fa812c04e20ce12f",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "users", "address", "68d38553fa812c04e20ce12f"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All User (token Admin)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{accessToken}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/users/admin/list/all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "users", "admin", "list", "all"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ]
+}

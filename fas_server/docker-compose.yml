@@ -1,0 +1,146 @@
+services:
+  user_service:
+    build:
+      context: ./user_service
+      dockerfile: Dockerfile
+    container_name: fas_user_service
+    restart: always
+    env_file:
+      - ./user_service/.env
+    command: npm run dev
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./user_service/src:/app/src
+      - /app/node_modules
+    networks:
+      - backend
+  interaction_service:
+    build:
+      context: ./interaction_service
+      dockerfile: Dockerfile
+    container_name: fas_interaction_service
+    restart: always
+    env_file:
+      - ./interaction_service/.env
+    command: npm run dev
+    ports:
+      - "8006:8006"
+    volumes:
+      - ./interaction_service/src:/app/src
+      - /app/node_modules
+    networks:
+      - backend
+  commerce_service:
+    build:
+      context: ./commerce_service
+      dockerfile: Dockerfile
+    container_name: fas_commerce_service
+    restart: always
+    env_file:
+      - ./commerce_service/.env
+
+    command: npm run dev
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./commerce_service/src:/app/src
+      - /app/node_modules
+    networks:
+      - backend
+
+  notification_service:
+    build:
+      context: ./notification_service
+      dockerfile: Dockerfile
+    container_name: fas_notification_service
+    restart: always
+    env_file:
+      - ./notification_service/.env
+    command: npm run dev
+    ports:
+      - "8004:8004"
+    volumes:
+      - ./notification_service/src:/app/src
+      - /app/node_modules
+    networks:
+      - backend
+    # Sử dụng Socket.IO cho giao tiếp real-time, không dùng RabbitMQ
+
+  search_service:
+    build:
+      context: ./search_service
+      dockerfile: Dockerfile
+    container_name: fas_search_service
+    restart: always
+    env_file:
+      - ./search_service/.env
+    depends_on:
+      elasticsearch:
+        condition: service_started
+    command: npm run dev
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./search_service/src:/app/src
+      - /app/node_modules
+    networks:
+      - backend
+  api_gateway:
+    build:
+      context: ./api_gateway
+      dockerfile: Dockerfile
+    container_name: fas_gateway
+    restart: always
+    env_file:
+      - ./api_gateway/.env
+    depends_on:
+      - user_service
+      - commerce_service
+    command: npm run dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api_gateway/src:/app/src
+      - /app/node_modules
+
+    networks:
+      - backend
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - backend
+
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana:8.15.3
+  #   container_name: kibana
+  #   depends_on:
+  #     - elasticsearch
+  #   environment:
+  #     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+  #   ports:
+  #     - "5601:5601"
+  #   networks:
+  #     - backend
+
+volumes:
+  es_data:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge

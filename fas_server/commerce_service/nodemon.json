@@ -1,0 +1,13 @@
+{
+  "watch": ["src"],
+  "ext": "js,json,env",
+  "ignore": ["node_modules/", "logs/", "*.log", ".git/", "dist/", "build/"],
+  "exec": "node src/server.js",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "legacyWatch": true,
+  "delay": "1000",
+  "verbose": true,
+  "restartable": "rs"
+}

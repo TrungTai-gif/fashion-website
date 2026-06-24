@@ -1,0 +1,64 @@
+<div style="font-family: Arial, sans-serif; color: #333; background-color: #f6f6f6; padding: 20px;">
+    <table width="100%"
+        style="max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; overflow: hidden;">
+        <tr>
+            <td
+                style="background-color: #4CAF50; color: white; padding: 16px 24px; text-align: center; font-size: 20px;">
+                XÁC NHẬN ĐƠN HÀNG #${orderCode}
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 24px;">
+                <p>Xin chào <strong>${customerName}</strong>,</p>
+                <p>Cảm ơn bạn đã đặt hàng tại <strong>Plantdoctor Shop</strong> 🌿</p>
+                <p>Để xác nhận đơn hàng của bạn, vui lòng nhập mã OTP bên dưới:</p>
+
+                <div style="text-align: center; margin: 24px 0;">
+                    <span style="
+              display: inline-block;
+              font-size: 28px;
+              letter-spacing: 6px;
+              font-weight: bold;
+              color: #4CAF50;
+              background: #f0f0f0;
+              padding: 12px 24px;
+              border-radius: 6px;
+            ">${otpCode}</span>
+                </div>
+
+                <p><strong>Mã OTP có hiệu lực trong vòng 5 phút.</strong></p>
+
+                <h3 style="margin-top: 30px; color: #4CAF50;">Chi tiết đơn hàng</h3>
+                <table width="100%" style="border-collapse: collapse; margin-top: 12px;">
+                    <thead>
+                        <tr style="background-color: #f9f9f9;">
+                            <th style="padding: 8px 12px; text-align:left;">Sản phẩm</th>
+                            <th style="padding: 8px 12px;">SL</th>
+                            <th style="padding: 8px 12px; text-align:right;">Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${itemsHTML}
+                    </tbody>
+                </table>
+
+                <p style="text-align:right; font-size:16px; margin-top: 12px;">
+                    <strong>Tổng cộng: ${totalAmount.toLocaleString()}₫</strong>
+                </p>
+
+                <p style="margin-top: 24px;">Nếu bạn không thực hiện đơn hàng này, vui lòng bỏ qua email này.</p>
+
+                <p style="margin-top: 16px; color: #777;">Trân trọng,<br><strong>Đội ngũ plantdoctor Shop</strong><br>
+                    📞 Hotline: 0988 123 456<br>
+                    🌐 <a href="https://greenfarm.vn" target="_blank">https://devlord.vn</a></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="background-color: #f0f0f0; padding: 12px; text-align:center; color: #888; font-size: 13px;">
+                © 2025 devlord.vn. Mọi quyền được bảo lưu.
+            </td>
+        </tr>
+    </table>
+</div>
